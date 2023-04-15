@@ -18,6 +18,10 @@ function Home()
     {
       navigation.navigate('Views');
     }
+     const handleFriends=()=>
+    {
+      navigation.navigate('Friends');
+    }
     return(
     <View style={styles.container}>
         <Text style={styles.title}>Home</Text>
@@ -30,6 +34,9 @@ function Home()
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleviews}>
         <Text style={styles.buttonText}>View Trip</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleFriends}>
+        <Text style={styles.buttonText}>Friends</Text>
       </TouchableOpacity>
     </View>
     );

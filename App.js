@@ -10,6 +10,7 @@ import CommunityTab from './src/screens/CommunityTab/CommunityTab'
 import AddCommunity from './src/screens/addCommunity/addCommunity';
 import Reviews from './src/screens/Reviews/Reviews'
 import ViewTrips  from './src/screens/ViewTrips/ViewTrips';
+import Friends from './src/screens/Friends/Friends'
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -20,10 +21,11 @@ export default function App() {
     <Stack.Screen name="SignUp" component={SignUp} />
     <Stack.Screen name="confirmEmail" component={ConfirmEmail} />
      <Stack.Screen name="Home" component={Home} />
-     <Stack.Screen name="CommunityTab" component={CommunityTab}></Stack.Screen>
-     <Stack.Screen name="AddCommunity" component={AddCommunity}></Stack.Screen>
-      <Stack.Screen name="Reviews" component={Reviews}></Stack.Screen>
-      <Stack.Screen name="Views" component={ViewTrips}></Stack.Screen>
+     <Stack.Screen name="CommunityTab" component={CommunityTab} />
+     <Stack.Screen name="AddCommunity" component={AddCommunity} />
+      <Stack.Screen name="Reviews" component={Reviews} />
+      <Stack.Screen name="Views" component={ViewTrips} />
+      <Stack.Screen name="Friends" component={Friends} />
     </Stack.Navigator>
     </NavigationContainer>
 
