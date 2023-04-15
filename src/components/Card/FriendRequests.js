@@ -5,8 +5,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 function FriendRequestsCard(props)
 {
-  const icon = <FontAwesome5 name={'check'} />;
-  const icon1 = <FontAwesome5 name={'times'} />;
+  const icon = <FontAwesome5 name={'check'} color="green"/>;
+  const icon1 = <FontAwesome5 name={'times'} color="red" />;
     return(
  <View style={styles.friendcard}>
  <View style={styles.parent}>
@@ -73,6 +73,7 @@ marginTop:20,
   icon:{
      marginLeft:40,
      marginTop:5,
+     color:'green',
   },
   icon1:{
    marginLeft:"35%",

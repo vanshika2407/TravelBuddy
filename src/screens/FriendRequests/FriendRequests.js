@@ -35,10 +35,10 @@ const FriendRequest=()=>
       <Text style={styles.title}>Friend Requets</Text>
       <View style={styles.parent}>
           <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Pending</Text>
+      <Text style={styles.buttonText}>Received</Text>
     </TouchableOpacity>
     <TouchableOpacity style={[styles.button]}>
-      <Text style={styles.buttonText}>Accepted</Text>
+      <Text style={styles.buttonText}>Pending</Text>
     </TouchableOpacity>
       </View>
       
