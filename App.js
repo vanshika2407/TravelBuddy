@@ -11,6 +11,7 @@ import AddCommunity from './src/screens/addCommunity/addCommunity';
 import Reviews from './src/screens/Reviews/Reviews'
 import ViewTrips  from './src/screens/ViewTrips/ViewTrips';
 import Friends from './src/screens/Friends/Friends'
+import FriendRequest from './src/screens/FriendRequests/FriendRequests';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
       <Stack.Screen name="Reviews" component={Reviews} />
       <Stack.Screen name="Views" component={ViewTrips} />
       <Stack.Screen name="Friends" component={Friends} />
+      <Stack.Screen name="FriendRequests" component={FriendRequest} />
     </Stack.Navigator>
     </NavigationContainer>
 

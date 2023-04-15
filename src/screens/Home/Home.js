@@ -22,6 +22,10 @@ function Home()
     {
       navigation.navigate('Friends');
     }
+      const handleFriendRequests=()=>
+    {
+      navigation.navigate('FriendRequests');
+    }
     return(
     <View style={styles.container}>
         <Text style={styles.title}>Home</Text>
@@ -37,6 +41,9 @@ function Home()
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleFriends}>
         <Text style={styles.buttonText}>Friends</Text>
+      </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleFriendRequests}>
+        <Text style={styles.buttonText}>Friend Request</Text>
       </TouchableOpacity>
     </View>
     );

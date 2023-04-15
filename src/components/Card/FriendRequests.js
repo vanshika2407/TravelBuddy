@@ -1,13 +1,30 @@
 import React from 'react'
 import {View,Text,StyleSheet,Image,TouchableOpacity} from 'react-native'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-function FriendsCard(props)
+
+function FriendRequestsCard(props)
 {
+  const icon = <FontAwesome5 name={'check'} />;
+  const icon1 = <FontAwesome5 name={'times'} />;
     return(
  <View style={styles.friendcard}>
- <View >
-<Image source={props.img} style={styles.image}></Image>
+ <View style={styles.parent}>
+<Image source={props.image} style={styles.image}></Image>
+<View style={[styles.line,styles.parent]}>
      <Text style={styles.username}>{props.username}</Text>
+       {/* <FaCheck /> */}
+       <View style={[styles.icon,styles.parent]}>
+       <TouchableOpacity>
+       {icon}
+       </TouchableOpacity>
+       <TouchableOpacity>
+       <View style={styles.icon1}>
+       {icon1}
+       </View>
+       </TouchableOpacity>
+       </View>
+       </View>
      </View>
     </View>
     )
@@ -36,6 +53,7 @@ const styles=StyleSheet.create(
   },
  image:{
 borderRadius:5,
+marginTop:20,
  },
    username: {
     fontSize: 20,
@@ -43,7 +61,7 @@ borderRadius:5,
     marginBottom: 4,
     alignItems:'center',
     justifyContent:'center',
-    paddingLeft:'5%',
+   // paddingLeft:'5%',
     color:"#6199F7",
   },
 
@@ -52,7 +70,18 @@ borderRadius:5,
     flexDirection: "row",
     marginBottom:-10,
   },
+  icon:{
+     marginLeft:40,
+     marginTop:5,
+  },
+  icon1:{
+   marginLeft:"35%",
+  },
+  line:{
+    marginTop:30,
+    marginLeft:20,
+  }
 }
 )
 
-export default FriendsCard;
+export default FriendRequestsCard;
