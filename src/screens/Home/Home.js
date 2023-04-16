@@ -30,6 +30,10 @@ function Home()
     {
       navigation.navigate('Home Page');
     }
+      const handleMessage=()=>
+    {
+      navigation.navigate('Message');
+    }
     return(
     <View style={styles.container}>
         <Text style={styles.title}>Home</Text>
@@ -51,6 +55,9 @@ function Home()
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleHomePg}>
         <Text style={styles.buttonText}>Home Page</Text>
+      </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleMessage}>
+        <Text style={styles.buttonText}>Messaging</Text>
       </TouchableOpacity>
     </View>
     );

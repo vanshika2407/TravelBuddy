@@ -13,6 +13,7 @@ import ViewTrips  from './src/screens/ViewTrips/ViewTrips';
 import Friends from './src/screens/Friends/Friends'
 import FriendRequest from './src/screens/FriendRequests/FriendRequests';
 import HomePg from './src/screens/HomePg/HomePg';
+import ChatScreen from './src/screens/Messaging/Messaging';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
       <Stack.Screen name="Friends" component={Friends} />
       <Stack.Screen name="FriendRequests" component={FriendRequest} />
       <Stack.Screen name="HomePage" component={HomePg} />
+        <Stack.Screen name="Message" component={ChatScreen} />
     </Stack.Navigator>
     </NavigationContainer>
 
