@@ -2,6 +2,7 @@ import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet,Image, ScrollView} from 'react-native'
 import Pic from '../../../assets/background.jpg';
 import FriendsCard from '../../components/Card/FriendsCard';
+import {LinearGradient} from 'expo-linear-gradient';
  const Name=[
     {
         username:'Vanshika',
@@ -26,7 +27,7 @@ const Friends=()=>
     // })
       return(
       <ScrollView style={styles.bb}>
-    
+        <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']}>
       {/* <View style={styles.container}> */}
       <Text style={styles.title}>Friends</Text>
       <View style={styles.parent}>
@@ -50,6 +51,7 @@ const Friends=()=>
      }
      </ScrollView>
       {/* </View> */}
+      </LinearGradient>
       </ScrollView>
 
     )
@@ -97,7 +99,7 @@ const styles=StyleSheet.create(
   },
   image:{
     width:'70%',
-    height:'30%',
+    height:'25%',
     alignItems:'center',
     justifyContent:'center',
     marginLeft:'14%',

@@ -2,6 +2,7 @@ import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet,Image, ScrollView} from 'react-native'
 import Logo from '../../../assets/favicon.png';
 import FriendRequestsCard from '../../components/Card/FriendRequests'
+import {LinearGradient} from 'expo-linear-gradient';
  const Name=[
     {
         username:'Vanshika',
@@ -30,7 +31,7 @@ const FriendRequest=()=>
     // })
       return(
       <ScrollView style={styles.bb}>
-    
+      <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']}>
       {/* <View style={styles.container}> */}
       <Text style={styles.title}>Friend Requets</Text>
       <View style={styles.parent}>
@@ -54,6 +55,7 @@ const FriendRequest=()=>
      )
      }
       {/* </View> */}
+      </LinearGradient>
       </ScrollView>
 
     )

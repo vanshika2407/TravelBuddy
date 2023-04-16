@@ -4,6 +4,7 @@ import Logo from 'login/assets/TravelBuddy-blue.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import {LinearGradient} from 'expo-linear-gradient';
 function AddCommunity() {
     const [eventName, setEvent] = useState('');
     const [eventDes, setDes] = useState('');
@@ -18,9 +19,11 @@ function AddCommunity() {
     };
     return (
         // <ScrollView>
-        <View style={styles.container}>
+          <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.container}>
+        <View>
             <Image source={Logo} style={styles.logo}/>
             <Text style={styles.title}>Add My Event</Text>
+            <View style={styles.input}>
             <CustomInput placeholder="Enter Event Name"
                 value={eventName}
                 setValue={setEvent}
@@ -36,8 +39,9 @@ function AddCommunity() {
             <CustomButton
                 text="Add Event"
                 onPress={OnAddEvent} />
-               
+                </View>
         </View>
+        </LinearGradient>
         // </ScrollView>
     );
 }
@@ -51,29 +55,35 @@ const styles=StyleSheet.create(
         },
         logo:{
             alignItems:'center',
-            width:'97%',
-            height:81,
+            width:'70%',
+            height:57,
+            marginLeft:'16%',
         },
          container: {
     flex: 1,
-    alignItems: 'center',
+   //alignItems: 'center',
     justifyContent: 'center',
   },
    title: {
-    fontSize: 24,
+    fontSize: 35,
     fontWeight: 'bold',
     marginBottom: 32,
+    marginLeft:'25%',
+    color:'white',
   },
- 
-  SignButton:{
+  input:{
+ //marginLeft:'27%',
+ alignItems:'center',
+  },
+  AddButton:{
   backgroundColor:'white',
   padding: 12,
   borderRadius: 4,
   alignItems: 'center',
-  width: '80%',
+  width: 50,
   margin:15,
   },
- SignbuttonText: {
+ AddbuttonText: {
     color: 'grey',
     fontSize: 18,
   },

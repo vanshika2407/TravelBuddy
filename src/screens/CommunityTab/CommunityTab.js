@@ -3,6 +3,7 @@ import {View,Text,StyleSheet, ScrollView,TouchableOpacity,SafeAreaView} from 're
 import Logo from 'login/assets/favicon.png';
 import Card from '../../components/Card/Card'
 import { useNavigation } from '@react-navigation/native';
+import {LinearGradient} from 'expo-linear-gradient';
 const Info=[
     {
 imageSource:Logo,
@@ -51,12 +52,14 @@ date={detail.date}
     
     return(
         <ScrollView>
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView >
+        <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']}>
         <Text style={styles.title}>Community Tab</Text>
             {details}
              <TouchableOpacity style={styles.AddButton} onPress={OnAddEvent} >
         <Text style={styles.AddbuttonText}>Add Trips</Text>
       </TouchableOpacity>
+      </LinearGradient>
         </SafeAreaView>
         </ScrollView>
     )

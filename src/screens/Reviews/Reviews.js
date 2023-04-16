@@ -1,6 +1,7 @@
 import React from 'react'
 import {View,Text,StyleSheet,TouchableOpacity,ScrollView} from 'react-native'
 import ReviewCard from '../../components/Card/ReviewCard'
+import {LinearGradient} from 'expo-linear-gradient';
 
 const reviews=[
     {
@@ -12,6 +13,9 @@ const reviews=[
     {
         review:"Okay",
     },
+    {
+      review:'Cool',
+    },
 ]
 const Reviews=()=>
 {
@@ -22,7 +26,8 @@ const Reviews=()=>
         )
     })
     return(
-        <ScrollView style={styles.bb}>
+        <ScrollView style={styles.container}>
+        <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']}>
 <View style={styles.container}>
     <Text style={styles.title}>Reviews</Text>
     <View style={styles.parent}>
@@ -35,6 +40,7 @@ const Reviews=()=>
     </View>
     {writeReview}
 </View>
+</LinearGradient>
 </ScrollView>
     )
 }
@@ -44,7 +50,7 @@ const styles=StyleSheet.create(
        backgroundColor:'#6199F7',
        },
         container:{
-         backgroundColor:'#6199F7',
+         //backgroundColor:'#6199F7',
          flex:1,
         },
          title:{

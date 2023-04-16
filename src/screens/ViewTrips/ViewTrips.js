@@ -2,6 +2,9 @@ import React from 'react'
 import {View,Text,StyleSheet,TouchableOpacity,ScrollView} from 'react-native'
 import ViewCard from '../../components/Card/ViewCard'
 import Logo from 'login/assets/favicon.png';
+//import LinearGradient from 'react-native-linear-gradient';
+import {LinearGradient} from 'expo-linear-gradient';
+
 
 
 const view=[
@@ -48,8 +51,9 @@ const ViewTrips=()=>
         )
     })
     return(
-        <ScrollView style={styles.bb}>
-<View style={styles.container}>
+        <ScrollView>
+        <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']}>
+<View>
     <Text style={styles.title}>View People On</Text>
     <Text style={[styles.title,styles.titleS]}>Similar Trips</Text>
     <View style={styles.parent}>
@@ -62,13 +66,14 @@ const ViewTrips=()=>
     </View>
     {views}
 </View>
+</LinearGradient>
 </ScrollView>
     )
 }
 const styles=StyleSheet.create(
     {
        bb:{
-       backgroundColor:'#6199F7',
+      // backgroundColor:'#6199F7',
        },
         container:{
          backgroundColor:'#6199F7',

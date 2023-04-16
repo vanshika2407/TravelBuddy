@@ -76,10 +76,10 @@ const styles=StyleSheet.create(
  
   SignButton:{
   backgroundColor:'white',
-  padding: 12,
+  padding: 5,
   borderRadius: 4,
   alignItems: 'center',
-  width: '80%',
+  //width: '50%',
   margin:15,
   },
  SignbuttonText: {
