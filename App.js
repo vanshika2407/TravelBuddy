@@ -1,12 +1,99 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Login from './Screens/Login';
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SignUp from './Screens/SignUp';
+import Home from './Screens/Home';
+import CreateProfile from './Screens/CreateProfile';
+import CommunityTab from './Screens/Community/CommunityTab';
+import AddCommunity from './Screens/Community/AddCommunity';
+import AddTrip from './Screens/Trip/AddTrip';
+import Friends from './Screens/Friends/Friends';
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+
+
 
 export default function App() {
+
+  const [email, setEmail] = useState('par76.pkar@gmail.com')
+  const [trip, setTrip] = useState({
+    destination: {
+      lat: 19.107022,
+      long: 72.827527,
+      place: 'Juhu',
+      locality: 'Mumbai Suburban'
+    },
+    arrivalDate: new Date('2023-04-19T01:25:58.323Z'),
+    departureDate: new Date('2023-04-21T01:25:58.323Z')
+  })
+  console.log(trip)
+
+  const CommunityScreen = () => {
+    return (
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+      >
+         <Stack.Screen name="CommunityTab">
+          {props => <CommunityTab {...props} email={email} trip={trip} setEmail={setEmail} />}
+        </Stack.Screen>
+        <Stack.Screen name="AddCommunity">
+          {props => <AddCommunity {...props} email={email} setEmail={setEmail} />}
+        </Stack.Screen>
+       
+      </Stack.Navigator>
+    )
+  }
+
+  const HomeScreen = () => {
+    return (
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+
+      >
+        <Tab.Screen name="Home">
+          {props => <Home {...props} setEmail={setEmail} />}
+        </Tab.Screen>
+        <Tab.Screen name="AddTrip">
+          {props => <AddTrip {...props} email={email} setTrip={setTrip} setEmail={setEmail} />}
+        </Tab.Screen>
+        <Tab.Screen name="Friends">
+          {props => <Friends {...props} email={email} setTrip={setTrip} setEmail={setEmail} />}
+        </Tab.Screen>
+        <Tab.Screen name="Community" component={CommunityScreen} />
+      </Tab.Navigator>
+    )
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+      >
+        <Stack.Screen name="Login">
+          {props => <Login {...props} email={email} setEmail={setEmail} />}
+        </Stack.Screen>
+        <Stack.Screen name="CreateProfile">
+          {props => <CreateProfile {...props} email={email} />}
+        </Stack.Screen>
+        <Stack.Screen name="SignUp">
+          {props => <SignUp {...props} setEmail={setEmail} />}
+        </Stack.Screen>
+        <Stack.Screen name="HomeScreen" component={HomeScreen}>
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
