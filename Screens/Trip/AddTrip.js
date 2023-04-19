@@ -25,7 +25,7 @@ export default function AddTrip(props) {
         // console.log(propmt)
         axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${propmt.replace(' ', '%20')}.json`, {
             params: {
-                access_token: 'pk.eyJ1IjoicHJhcGthciIsImEiOiJjbGdlOWt5ODcwdHVnM2dzeGdmaG51MnZpIn0.71k9qLkI0Za9zLN0SsRi9A',
+                access_token: MAPBOX_API_KEY,
             }
         })
             .then(res => {
@@ -138,7 +138,7 @@ export default function AddTrip(props) {
                                 });
                             }}
                             query={{
-                                key: 'AIzaSyBXQMqz-hANrslZ2xiJiu1tW_NaTgyZlAI',
+                                key: GOOGLE_MAPS_API_KEY,
                                 language: 'en',
                                 components: 'country:in',
                                 radius: 30000
