@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, StatusBar, Button } from 'react-native'
 import Logo from '../../assets/favicon.png';
 import { FAB } from 'react-native-paper';
 import Card from '../../Components/Card/Card'
@@ -44,15 +44,12 @@ function CommunityTab(props) {
     })
 
     return (
-        <ScrollView>
-            <SafeAreaView style={styles.container}>
-                {data.length > 0? details : <Text>No Communities nearby</Text> }
-                <FAB
-                    icon="plus"
-                    style={styles.fab}
-                    onPress={OnAddEvent}
-                />
-            </SafeAreaView>
+        <ScrollView style={{ backgroundColor: "#6199F7", flex: 1 }}>
+            <View style={styles.container}>
+                {data.length > 0 ? details : <Text>No Communities nearby</Text>}
+                <Button title="Add event"  onPress={OnAddEvent} />
+            </View>
+
         </ScrollView>
     )
 }
@@ -68,20 +65,21 @@ const styles = StyleSheet.create(
             marginLeft: '24%',
             //color:'#2196F3',
             color: 'white',
-            
+
         },
         fab: {
             position: 'absolute',
             margin: 16,
             right: 0,
             bottom: 0,
-          },
+        },
         container: {
             marginTop: 10,
+            flex: 1,
             //backgroundColor:'#79c2d0',
-            backgroundColor: '#6199F7',
-            height: '100%',
-            width: '100%'
+            // backgroundColor: '#6199F7',
+            // height: 800,
+            marginTop: 50,
         },
         AddButton: {
             backgroundColor: 'white',
@@ -90,6 +88,7 @@ const styles = StyleSheet.create(
             alignItems: 'center',
             width: '80%',
             margin: 35,
+            color: 'grey',
         },
         AddbuttonText: {
             color: 'grey',

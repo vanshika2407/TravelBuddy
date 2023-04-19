@@ -12,6 +12,8 @@ import axios from 'axios';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { storage } from '../../firebaseConfig'
 import uuid from 'react-native-uuid';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+
 
 function AddCommunity(props) {
     const metadata = {
@@ -59,6 +61,7 @@ function AddCommunity(props) {
 
     const OnAddEvent = async () => {
         setLoading(true)
+        console.log(eventName, eventDes, date, img, description)
         if (eventName && eventDes && date && img && description) {
             try {
 
@@ -151,77 +154,111 @@ function AddCommunity(props) {
     }
 
     return (
-        <ScrollView style={{ paddingBottom: 20 }}>
-            <View style={styles.container}>
-                {/* <Image source={Logo} style={styles.logo}/> */}
+        <>
+            <ScrollView style={{ paddingBottom: 20 }}>
 
-                <Text style={styles.title}>Add My Event</Text>
-                <View>
-                    <Image source={img ? { uri: img } : Logo} style={{ height: 200, width: 300, marginTop: 10 }} />
-                    <ImageFromGallery setImage={setImg} aspect="rectangle" />
+                <View style={styles.container}>
+                    {/* <Image source={Logo} style={styles.logo}/> */}
+
+                    <Text style={styles.title}>Add My Event</Text>
+                    <View>
+                        <Image source={img ? { uri: img } : Logo} style={{ height: 200, width: 300, marginTop: 10 }} />
+                        <ImageFromGallery setImage={setImg} aspect="rectangle" />
+                    </View>
+                    <View>
+                        <TextInput
+                            value={eventName}
+                            onChangeText={setEvent}
+                            label={"Event Name"}
+                            style={styles.input}
+                            underlineColor='#6199F7'
+                            activeUnderlineColor='#6199F8'
+
+                        />
+                    </View>
+                    <View>
+                        <TouchableOpacity style={styles.input}
+                            onPress={handleDate}
+                        >
+                            <Text style={{ color: '#666', margin: 15 }}>
+                                Event Date : {date.toDateString() || 'Date of Birth'}
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                        <TextInput
+                            multiline
+                            editable
+                            numberOfLines={3}
+                            maxLength={40}
+
+                            value={description}
+                            onChangeText={setDescription}
+                            label={"Description"}
+                            style={styles.input}
+                            underlineColor='#6199F7'
+                            activeUnderlineColor='#6199F8'
+
+                        />
+                    </View>
+
+                    <Button disabled={loading ? true : false} title="Add event" onPress={OnAddEvent} style={{ marginBottom: 20 }} />
+                    {show && (
+                        <DateTimePicker
+                            testID="dateTimePicker"
+                            value={date}
+                            mode='date'
+                            is24Hour={true}
+                            display="default"
+                            onChange={changeDate}
+                        />
+                    )}
                 </View>
-                <View>
-                    <TextInput
-                        value={eventName}
-                        onChangeText={setEvent}
-                        label={"Event Name"}
-                        style={styles.input}
-                        underlineColor='#6199F7'
-                        activeUnderlineColor='#6199F8'
+            </ScrollView>
+            <GooglePlacesAutocomplete
+                    placeholder='Place of event'
+                    fetchDetails={true}
+                    GooglePlacesDetailsQueery={{
+                        fields: 'formatted_address',
+                    }}
+                    onPress={(data, details = null) => {
+                        // 'details' is provided when fetchDetails = true
+                        // console.log(data, details);
+                        str = JSON.stringify(details);
+                        str = JSON.stringify(details, null, 4); // (Optional) beautiful indented output.
+                        // console.log(str)
 
-                    />
-                </View>
-                <View>
-                    <TouchableOpacity style={styles.input}
-                        onPress={handleDate}
-                    >
-                        <Text style={{ color: '#666', margin: 15 }}>
-                            Event Date : {date.toDateString() || 'Date of Birth'}
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-                <View>
-                    <TextInput
-                        value={eventDes}
-                        onChangeText={setDes}
-                        label={"Event Place"}
-                        style={styles.input}
-                        underlineColor='#6199F7'
-                        activeUnderlineColor='#6199F8'
+                        setLocation(
+                            {
+                                lat: details.geometry.location.lat,
+                                long: details.geometry.location.lng
+                            }
 
-                    />
-                    <Button title='submit' onPress={handleLocation} />
-                </View>
-                <View>
-                    <TextInput
-                        multiline
-                        editable
-                        numberOfLines={3}
-                        maxLength={40}
-
-                        value={description}
-                        onChangeText={setDescription}
-                        label={"Description"}
-                        style={styles.input}
-                        underlineColor='#6199F7'
-                        activeUnderlineColor='#6199F8'
-
-                    />
-                </View>
-
-                <Button disabled={loading ? true : false} title="Add event" onPress={OnAddEvent} style={{ marginBottom: 20 }} />
-                {show && (
-                    <DateTimePicker
-                        testID="dateTimePicker"
-                        value={date}
-                        mode='date'
-                        is24Hour={true}
-                        display="default"
-                        onChange={changeDate}
-                    />
-                )}
-            </View>
-        </ScrollView>
+                        )
+                        // setPlace(details.address_components[4].long_name.toLowerCase())
+                        setDes(details.formatted_address)
+                        details.address_components.forEach(element => {
+                            if (element.types[0] == 'locality') {
+                                setPlace(element.long_name.toLowerCase())
+                                console.log(element.long_name.toLowerCase())
+                            }
+                        });
+                    }}
+                    query={{
+                        key: 'AIzaSyBXQMqz-hANrslZ2xiJiu1tW_NaTgyZlAI',
+                        language: 'en',
+                        components: 'country:in',
+                        radius: 30000
+                    }}
+                    styles={
+                        {
+                            container: { flex: 0, position: 'absolute', top: 0, width: "100%", zIndex: 3, marginTop: 20 },
+                            listView: { backgroundColor: 'white', position: 'relative', zIndex: 3 },
+                        }
+                    }
+                />
+        </>
     );
 }
 

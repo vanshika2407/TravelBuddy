@@ -12,11 +12,10 @@ import CommunityTab from './Screens/Community/CommunityTab';
 import AddCommunity from './Screens/Community/AddCommunity';
 import AddTrip from './Screens/Trip/AddTrip';
 import Friends from './Screens/Friends/Friends';
+import Iternary from './Screens/Iternary/Iternary';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
-
-
 
 
 export default function App() {
@@ -29,10 +28,11 @@ export default function App() {
       place: 'Juhu',
       locality: 'Mumbai Suburban'
     },
+    interests: ['food', 'shopping'],
     arrivalDate: new Date('2023-04-19T01:25:58.323Z'),
     departureDate: new Date('2023-04-21T01:25:58.323Z')
   })
-  console.log(trip)
+  // console.log(trip)
 
   const CommunityScreen = () => {
     return (
@@ -60,14 +60,17 @@ export default function App() {
         }}
 
       >
-        <Tab.Screen name="Home">
-          {props => <Home {...props} setEmail={setEmail} />}
+        <Tab.Screen  name="Home">
+          {props => <Home {...props} email={email}  />}
         </Tab.Screen>
         <Tab.Screen name="AddTrip">
           {props => <AddTrip {...props} email={email} setTrip={setTrip} setEmail={setEmail} />}
         </Tab.Screen>
         <Tab.Screen name="Friends">
-          {props => <Friends {...props} email={email} setTrip={setTrip} setEmail={setEmail} />}
+          {props => <Friends {...props} email={email} trip={trip} setEmail={setEmail} />}
+        </Tab.Screen>
+        <Tab.Screen name="Iternary">
+          {props => <Iternary {...props} trip={trip} />}
         </Tab.Screen>
         <Tab.Screen name="Community" component={CommunityScreen} />
       </Tab.Navigator>

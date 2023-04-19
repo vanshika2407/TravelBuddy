@@ -7,6 +7,7 @@ import axios from 'axios';
 import FAB from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { BASE_URL } from '../../Api/BaseUrl';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 
 export default function AddTrip(props) {
@@ -64,6 +65,8 @@ export default function AddTrip(props) {
                 place: place
             }
 
+            console.log(obj)
+
             axios.post(`${BASE_URL}/add-trip`,
                 obj
             )
@@ -79,6 +82,7 @@ export default function AddTrip(props) {
                                 place: propmt,
                                 locality: place
                             },
+                            interests: interests.toLowerCase().split(' '),
                             arrivalDate: date,
                             departureDate: new Date(date.getTime() + (noOfDays * 24 * 60 * 60 * 1000)),
                         }
@@ -101,53 +105,99 @@ export default function AddTrip(props) {
     return (
         <>
             {!show &&
-                <View View style={styles.container} >
+                <>
 
-                    <MapView
-                        style={{ flex: 1 }}
-                        animateToRegion={{
-                            region: {
-                                latitude: location.lat,
-                                longitude: location.long,
-                                latitudeDelta: 0.0222,
-                                longitudeDelta: 0.0121,
-                            },
-                            duration: 10000
-                        }}
-                        region={
-                            {
-                                latitude: location.lat,
-                                longitude: location.long,
-                                latitudeDelta: 0.0222,
-                                longitudeDelta: 0.0121,
+                    <View View style={styles.container} >
+                        <GooglePlacesAutocomplete
+                            placeholder='Search'
+                            fetchDetails={true}
+                            GooglePlacesDetailsQueery={{
+                                fields: 'formatted_address',
+                            }}
+                            onPress={(data, details = null) => {
+                                // 'details' is provided when fetchDetails = true
+                                // console.log(data, details);
+                                str = JSON.stringify(details);
+                                str = JSON.stringify(details, null, 4); // (Optional) beautiful indented output.
+                                // console.log(str)
+
+                                setLocation(
+                                    {
+                                        lat: details.geometry.location.lat,
+                                        long: details.geometry.location.lng
+                                    }
+                                    
+                                )
+                                // setPlace(details.address_components[4].long_name.toLowerCase())
+                                setPrompt(details.formatted_address)
+                                details.address_components.forEach(element => {
+                                    if (element.types[0] == 'locality') {
+                                        setPlace(element.long_name.toLowerCase())
+                                        console.log(element.long_name.toLowerCase())
+                                    }
+                                });
+                            }}
+                            query={{
+                                key: 'AIzaSyBXQMqz-hANrslZ2xiJiu1tW_NaTgyZlAI',
+                                language: 'en',
+                                components: 'country:in',
+                                radius: 30000
+                            }}
+                            styles={
+                                {
+                                    container: { flex: 0, position: 'absolute', top: 0, left: 0, width: "100%", zIndex: 2 },
+                                    listView: { backgroundColor: 'white', },
+                                }
                             }
-                        }
-                    >
-                        <Marker
-                            key="1"
-                            coordinate={{ latitude: location.lat, longitude: location.long }}
-                            title="hello"
-                            description="hello"
                         />
-                    </MapView>
-                    <View style={styles.bottomDiv}>
-                        <Text style={{ color: 'white', fontSize: 20, marginTop: 10 }}>Add Trip</Text>
-                        <View>
-                            <TextInput
-                                value={propmt}
-                                onChangeText={setPrompt}
-                                label={'Destination'}
-                                style={styles.input}
-                                underlineColor='#6199F7'
-                                activeUnderlineColor='#6199F8'
+
+                        <MapView
+                            style={{ flex: 1 }}
+                            animateToRegion={{
+                                region: {
+                                    latitude: location.lat,
+                                    longitude: location.long,
+                                    latitudeDelta: 0.0222,
+                                    longitudeDelta: 0.0121,
+                                },
+                                duration: 10000
+                            }}
+                            region={
+                                {
+                                    latitude: location.lat,
+                                    longitude: location.long,
+                                    latitudeDelta: 0.0222,
+                                    longitudeDelta: 0.0121,
+                                }
+                            }
+                        >
+                            <Marker
+                                key="1"
+                                coordinate={{ latitude: location.lat, longitude: location.long }}
+                                title={propmt}
+                                description="Your Picked Location"
                             />
+                        </MapView>
+                        <View style={styles.bottomDiv}>
+                            <Text style={{ color: 'white', fontSize: 20, marginTop: 10 }}>Add Trip</Text>
+                            <View>
+                                <TextInput
+                                    value={propmt}
+                                    onChangeText={setPrompt}
+                                    label={'Destination'}
+                                    style={styles.input}
+                                    underlineColor='#6199F7'
+                                activeUnderlineColor='#6199F8'
+                                // disabled={true}
+                                />
+                            </View>
+                            {/* <Button onPress={handleLocation} mode='contained' textColor='#6199F7' style={styles.button}>Submit</Button> */}
+                            <Button onPress={handleShow} mode='contained' textColor='#6199F7' style={styles.button}>next</Button>
                         </View>
-                        <Button onPress={handleLocation} mode='contained' textColor='#6199F7' style={styles.button}>Submit</Button>
-                        <Button onPress={handleShow} mode='contained' textColor='#6199F7' style={styles.button}>next</Button>
-                    </View>
 
 
-                </View >
+                    </View >
+                </>
             }
             {
 
@@ -217,14 +267,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-
+        // alignItems: 'center',
         marginTop: StatusBar.currentHeight || 0,
     },
     bottomDiv: {
         position: 'absolute',
         bottom: 0,
         width: '100%',
-        height: 250,
+        height: 200,
         borderTopRightRadius: 20,
         borderTopLeftRadius: 20,
         zIndex: 1,
