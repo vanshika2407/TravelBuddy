@@ -46,7 +46,7 @@ function AddCommunity(props) {
         // console.log(propmt)
         axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${eventDes.replace(' ', '%20')}.json`, {
             params: {
-                access_token: 'pk.eyJ1IjoicHJhcGthciIsImEiOiJjbGdlOWt5ODcwdHVnM2dzeGdmaG51MnZpIn0.71k9qLkI0Za9zLN0SsRi9A',
+                access_token: MAPBOX_API_KEY,
             }
         })
             .then(res => {
@@ -246,7 +246,7 @@ function AddCommunity(props) {
                         });
                     }}
                     query={{
-                        key: 'AIzaSyBXQMqz-hANrslZ2xiJiu1tW_NaTgyZlAI',
+                        key: GOOGLE_API_KEY,
                         language: 'en',
                         components: 'country:in',
                         radius: 30000
