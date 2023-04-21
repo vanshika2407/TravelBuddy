@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ToastAndroid, StatusBar, Image } from 'react-na
 import { TextInput, Button } from 'react-native-paper'
 import axios from 'axios';
 import  { BASE_URL } from '../Api/BaseUrl'
+import AnimationLogin from './Animation/AnimationLogin';
+import Animation from './Animation/Animation'
 
 export default function Login(props) {
     const [email, setEmail] = useState('')
@@ -41,6 +43,8 @@ export default function Login(props) {
     return (
 
         <View style={styles.container}>
+        <AnimationLogin ></AnimationLogin>
+        {/* <Animation></Animation> */}
             <Image
                 source={require('../assets/images/TravelBuddy.png')}
                 style={{ width: 250, height: 100, marginTop: 50, objectFit: 'contain' }}
@@ -102,5 +106,5 @@ const styles = StyleSheet.create({
         marginTop: 15,
         backgroundColor: 'white',
         color: '#6199F7',
-    }
+    },
 })

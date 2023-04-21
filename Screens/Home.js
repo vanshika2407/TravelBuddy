@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Button } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Button,ImageBackground } from 'react-native'
 // import Pic from '../../../assets/background.jpg';
 import HomeCard from '../Components/Card/HomePgCard';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -8,6 +8,8 @@ import axios from 'axios';
 import { BASE_URL } from '../Api/BaseUrl';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import * as Location from 'expo-location';
+import Pic from '../assets/images/home.png'
+import Animation from './Animation/Animation'
 
 const Home = (props) => {
   const [data, setData] = useState({ username: '', profilePhoto: '' });
@@ -57,14 +59,19 @@ const Home = (props) => {
 
   };
 
-  return (
-    <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.bb}>
-      <ScrollView>
-        {/* <View style={styles.container}> */}
-
+ return (
+    // <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.bb}>
+      <ScrollView style={styles.bb} >
+        <View style={styles.container}>
+        <ImageBackground source={Pic} resizeMode="cover" style={[styles.imagee,styles.bb]}></ImageBackground>
+          <View style={styles.circle}>
         <Text style={styles.title}>Welcome To!!</Text>
+        <TouchableOpacity style={styles.sos} onPress={SOS}>
+          <Text style={styles.sosText}>SOS</Text>
+        </TouchableOpacity>
+        </View>
         <Image source={Logo} style={styles.logo} />
-        
+        <Animation></Animation>
         {/* <Image source={Pic} style={styles.image}/> */}
         {!loading && data &&
           <HomeCard
@@ -74,13 +81,12 @@ const Home = (props) => {
         {
           loading && <ActivityIndicator animating={true} color={MD2Colors.white} />
         }
-        {/* </View> */}
-        <Button title="SOS" onPress={SOS} style={{ flex:1, width: 40, height: 40, backgroundColor: "red" , marginTop: 40 }} />
+        </View>
+        {/* <Button title="SOS" onPress={SOS} style={{ flex:1, width: 40, height: 40, backgroundColor: "red" , marginTop: 40 }} /> */}
       </ScrollView>
-    </LinearGradient>
+    // </LinearGradient>
 
   )
-
 }
 
 const styles = StyleSheet.create(
@@ -111,6 +117,34 @@ const styles = StyleSheet.create(
       marginTop: 30,
       marginLeft: '14%',
     },
+     sos:{
+      borderWidth:2,
+      borderColor:"red",
+      width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
+    backgroundColor: "red",
+    marginLeft:50,
+
+    },
+    sosText:{
+      color:'white',
+      marginTop:10,
+      marginLeft:7,
+    },
+    circle:{
+     // flex:1,
+      flexDirection:'row',
+      marginTop:30,
+    },
+     imagee: {
+    flex: 1,
+    position:'absolute',
+    justifyContent: 'center',
+    width:'100%',
+    height:'100%',
+    opacity:0.8,
+  },
   }
 )
 

@@ -25,7 +25,10 @@ function FriendRecommendCard(props) {
                     <Text style={styles.username}>{props.username}</Text>
                     {/* <FaCheck /> */}
                     <View style={[styles.icon, styles.parent]}>
-                        <Button disabled={request ? true : false} title={request ? "sent" : "send"} onPress={sendRequest} />
+                        {/* <Button disabled={request ? true : false} title={request ? "sent" : "send"} onPress={sendRequest} style={styles.send}  /> */}
+                        <TouchableOpacity disabled={request ? true : false}  onPress={sendRequest} style={styles.send}>
+                            <Text style={styles.request}>{request ? "sent" : "send"}</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -86,7 +89,19 @@ const styles = StyleSheet.create(
         line: {
             marginTop: 30,
             marginLeft: 20,
+        },
+        send:{
+            borderRadius:10,
+            //height:10,
+            marginTop:-5,
+            
+        },
+        request:{
+            color:'green',
+            fontWeight:'bold',
+            fontSize:15,
         }
+    
     }
 )
 

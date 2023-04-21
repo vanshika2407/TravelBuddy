@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, SafeAreaView, StatusBar, Image, ToastAndroid } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, StatusBar, Image, ToastAndroid, ScrollView } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import { BASE_URL } from '../Api/BaseUrl'
+import AnimationSignUp from './Animation/AnimationSignUp'
 export default function SignUp(props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -40,11 +41,12 @@ export default function SignUp(props) {
         }
     }
     return (
-
+        <ScrollView>
         <View style={styles.container}>
+        <AnimationSignUp></AnimationSignUp>
             <Image
                 source={require('../assets/images/TravelBuddy.png')}
-                style={{ width: 250, height: 100, marginTop: 50, objectFit: 'contain' }}
+                style={{ width: 250, height: 100, marginTop: -25, objectFit: 'contain' }}
             />
             <View>
                 <TextInput
@@ -95,6 +97,7 @@ export default function SignUp(props) {
                 Already have an account? Login
             </Text>
         </View>
+        </ScrollView>
 
     )
 }

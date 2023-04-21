@@ -84,6 +84,8 @@ export default function App() {
           headerShown: false
         }}
       >
+      {/* <Stack.Screen name="HomeScreen" component={HomeScreen}>
+        </Stack.Screen> */}
         <Stack.Screen name="Login">
           {props => <Login {...props} email={email} setEmail={setEmail} />}
         </Stack.Screen>

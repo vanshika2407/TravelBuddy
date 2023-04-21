@@ -110,6 +110,8 @@ const styles = StyleSheet.create(
       color: '#fff',
       fontSize: 10,
       paddingLeft: 2,
+      paddingTop:2,
+      fontWeight:'bold',
     },
     container: {
       flex: 1,

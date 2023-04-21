@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, StatusBar, Button, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, StatusBar, Button, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import IternaryCard from '../../Components/Card/IternaryCard'
 import axios from 'axios'
 import { BASE_URL } from '../../Api/BaseUrl'
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+import AnimationItenary from '../Animation/AnimationItenary'
 
 export default function Iternary(props) {
     const [data, setData] = React.useState([])
@@ -29,8 +30,12 @@ export default function Iternary(props) {
         <ScrollView style={styles.scrollContainer}>
 
             <View style={styles.container}>
-                <Text style={{ textAlign: "center", marginTop: 10, fontSize: 25, color: "white" }}>Iternary</Text>
-                <Button title="Generate" onPress={generateIternary} style={{ width: 40 }} />
+                <Text style={{ textAlign: "center", marginTop: 20, fontSize: 25, color: "white" }}>Plan Your Trip!</Text>
+                {/* <Button title="Generate" onPress={generateIternary} style={{ width: 40 }} /> */}
+                <AnimationItenary></AnimationItenary>
+                <TouchableOpacity style={styles.button} onPress={generateIternary}>
+                <Text>Generate Your Itenary</Text>
+                </TouchableOpacity>
                 {!loading && data.length > 0 && data.map((item, index) => {
                     if (item === "") {
                         return null
@@ -62,5 +67,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#6199F7',
 
+    },
+    button:{
+        flex:1,
+      backgroundColor:'white',
+      borderRadius:5,
+      alignItems:'center',
+      justifyContent:'center',
+      marginTop:'40%',
+      width:150,
+      height:25,
     }
 });

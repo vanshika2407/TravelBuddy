@@ -46,8 +46,12 @@ function CommunityTab(props) {
     return (
         <ScrollView style={{ backgroundColor: "#6199F7", flex: 1 }}>
             <View style={styles.container}>
-                {data.length > 0 ? details : <Text>No Communities nearby</Text>}
-                <Button title="Add event"  onPress={OnAddEvent} />
+            <Text style={styles.title}>Community Tab</Text>
+                {data.length > 0 ? details : <Text style={styles.sub}>No Communities nearby</Text>}
+                {/* <Button title="Add event"  onPress={OnAddEvent} /> */}
+                <TouchableOpacity style={styles.AddButton} onPress={OnAddEvent}>
+                  <Text style={styles.AddbuttonText}>Add Event</Text>
+                </TouchableOpacity>
             </View>
 
         </ScrollView>
@@ -61,7 +65,7 @@ const styles = StyleSheet.create(
             justifyContent: 'center',
             fontSize: 30,
             fontWeight: 'bold',
-            marginTop: 50,
+            marginTop: 20,
             marginLeft: '24%',
             //color:'#2196F3',
             color: 'white',
@@ -82,11 +86,13 @@ const styles = StyleSheet.create(
             marginTop: 50,
         },
         AddButton: {
+        
             backgroundColor: 'white',
             padding: 12,
             borderRadius: 4,
             alignItems: 'center',
-            width: '80%',
+            marginLeft:55,
+            width: '70%',
             margin: 35,
             color: 'grey',
         },
@@ -94,6 +100,14 @@ const styles = StyleSheet.create(
             color: 'grey',
             fontSize: 18,
         },
+        sub:{
+            fontSize:20,
+            color:'white',
+            alignItems:'center',
+            marginLeft:50,
+            marginTop:'50%',
+
+        }
     }
 );
 export default CommunityTab

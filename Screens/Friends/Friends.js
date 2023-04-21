@@ -34,51 +34,57 @@ const Friends = (props) => {
   }
 
   return (
+    // <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.bb}>
     <ScrollView style={styles.bb}>
-      {/* <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']}> */}
       {/* <View style={styles.container}> */}
       <Text style={styles.title}>Recommendations</Text>
       <View style={styles.parent}>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>pending requests</Text>
+          <Text style={styles.buttonText}>Pending Requests</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.button]}>
-          <Text style={styles.buttonText}>received requests</Text>
+          <Text style={styles.buttonText}>Received Requests</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ marginTop: 20, flexDirection: "row" }}>
+      <Text style={styles.filter}>Filters</Text>
+      <View style={{ marginTop:10, flexDirection: "row" }}>
         <Chip
           onPress={() => setGender('Male')}
-          selectedColor='black'
+          selectedColor='white'
           showSelectedOverlay={true}
           mode='outlined'
           selected={gender === 'Male' ? true : false}
-          style={{ marginRight: 10 }}
+          style={styles.chipStyle}
+          //Type='2'
         >
           Male
         </Chip>
         <Chip
           onPress={() => setGender('Female')}
-          selectedColor='black'
+          selectedColor='white'
           showSelectedOverlay={true}
           mode='outlined'
           selected={gender === 'Female' ? true : false}
-          style={{ marginRight: 10 }}
+           style={styles.chipStyle}
         >
           Female
         </Chip>
         <Chip
           onPress={() => setGender('Any')}
-          selectedColor='black'
+          selectedColor='white'
           showSelectedOverlay={true}
           mode='outlined'
           selected={gender === 'Any' ? true : false}
+           style={styles.chipStyle}
         >
           Any
 
         </Chip>
       </View>
-      <Button onPress={findMatch} title="Find Match" />
+      {/* <Button style={styles.find} onPress={findMatch}  title="Find Match" /> */}
+      <TouchableOpacity style={styles.find} onPress={findMatch}>
+        <Text style={styles.Text}>Find Match</Text>
+      </TouchableOpacity>
 
       {/* <Image source={Pic} style={styles.image}/> */}
 
@@ -95,10 +101,10 @@ const Friends = (props) => {
       )
       }
       {loading && <ActivityIndicator animating={true} color={MD2Colors.white} />}
-      {!loading && data && data.length === 0 && <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 20 }}>No Match Found</Text>}
+      {!loading && data && data.length === 0 && <Text style={{ textAlign: 'center', marginTop: 30, fontSize: 20,color:'white' }}>No Match Found</Text>}
       {/* </View> */}
-      {/* </LinearGradient> */}
     </ScrollView>
+      // </LinearGradient>
 
   )
 
@@ -108,40 +114,50 @@ const styles = StyleSheet.create(
   {
     bb: {
       backgroundColor: '#6199F7',
+      height:'100%',
     },
     container: {
       backgroundColor: '#6199F7',
       flex: 1,
+      alignItems:'center',
+      justifyContent:"center",
     },
     title: {
       textAlign: 'center',
       fontSize: 30,
       fontWeight: 'bold',
       marginTop: 50,
-      marginLeft: '27%',
+      //marginLeft: '27%',
       //color:'#2196F3',
       color: 'white',
     },
     button: {
-      backgroundColor: '#0066cc',
-      padding: 2,
-      borderRadius: 20,
+      //backgroundColor: '#0066cc',
+      //padding: 2,
+      borderRadius: 10,
       alignItems: 'center',
-      width: '30%',
+      //width: '30%',
       margin: 50,
-      borderColor: 'white',
-      borderWidth: 2,
-      //height:4,
+      //borderColor: 'white',
+     // borderWidth: 2,
+      //height:"30%",
     },
     buttonText: {
       color: '#fff',
       fontSize: 18,
+      //textDecorationLine:"underline",
+       paddingBottom:10,
+            borderBottomStyle:'solid',
+            borderBottomColor:'white',
+            borderBottomWidth: 1,
+            //borderBottomOpacity:0.8,
+           
     },
     parent: {
       //flex: 1,
       flexDirection: "row",
       marginBottom: -10,
-      marginLeft: -37,
+      marginLeft: -45,
     },
     image: {
       width: '70%',
@@ -151,7 +167,39 @@ const styles = StyleSheet.create(
       marginLeft: '14%',
       borderRadius: 40,
     },
+    chipStyle:{
+      marginRight: 10,
+      marginBottom:10,
+      marginTop:0,
+      height:'100%',
+      backgroundColor:'#00000000',
+      borderWidth:0,
+    },
+    filter:{
+    color:'white',
+    marginLeft:20,
+    fontWeight:'bold',
+    fontSize:20,
+    marginBottom:-20,
+    },
+    find:{
+      marginTop:20,
+      //borderRadius:10,
+       padding:2,
+       marginLeft:0,
+    alignItems: 'center',
+    width:'100%',
+    margin:50,
+    borderColor:'white',
+    borderWidth:2,
+    backgroundColor:'#0066cc',
+    },
+    Text:{
+     color:'white',
+     fontSize:15,
+     padding:5,
+     fontWeight:'bold',
+    }
   }
 )
-
 export default Friends

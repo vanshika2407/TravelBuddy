@@ -179,6 +179,7 @@ export default function AddTrip(props) {
                             />
                         </MapView>
                         <View style={styles.bottomDiv}>
+                            {/* <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.bb}> */}
                             <Text style={{ color: 'white', fontSize: 20, marginTop: 10 }}>Add Trip</Text>
                             <View>
                                 <TextInput
@@ -193,7 +194,9 @@ export default function AddTrip(props) {
                             </View>
                             {/* <Button onPress={handleLocation} mode='contained' textColor='#6199F7' style={styles.button}>Submit</Button> */}
                             <Button onPress={handleShow} mode='contained' textColor='#6199F7' style={styles.button}>next</Button>
+                        {/* </LinearGradient> */}
                         </View>
+
 
 
                     </View >
@@ -264,6 +267,17 @@ export default function AddTrip(props) {
 }
 
 const styles = StyleSheet.create({
+   bb:{
+  position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        height: 200,
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+        zIndex: 1,
+        alignItems: 'center',
+
+   },
     container: {
         flex: 1,
         backgroundColor: '#fff',
