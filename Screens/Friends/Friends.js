@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image, Button, ScrollView } from 'react-native'
 import Logo from '../../assets/favicon.png';
 import FriendRequestsCard from '../../Components/Card/FriendRequests'
-import { LinearGradient } from 'expo-linear-gradient';
 import { Chip } from 'react-native-paper';
 import { BASE_URL } from '../../Api/BaseUrl';
 import axios from 'axios';
