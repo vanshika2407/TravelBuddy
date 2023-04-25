@@ -5,6 +5,7 @@ import axios from 'axios'
 import { BASE_URL } from '../../Api/BaseUrl'
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import AnimationItenary from '../Animation/AnimationItenary'
+import {LinearGradient} from 'expo-linear-gradient';
 
 export default function Iternary(props) {
     const [data, setData] = React.useState([])

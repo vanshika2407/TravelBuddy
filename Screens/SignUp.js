@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, SafeAreaView, StatusBar, Image, ToastAndroid, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, StatusBar, Image, ToastAndroid, ScrollView, TouchableOpacity } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import { BASE_URL } from '../Api/BaseUrl'
+import {LinearGradient} from 'expo-linear-gradient';
 import AnimationSignUp from './Animation/AnimationSignUp'
 export default function SignUp(props) {
     const [email, setEmail] = useState('')
@@ -43,6 +44,7 @@ export default function SignUp(props) {
     return (
         <ScrollView>
         <View style={styles.container}>
+         <LinearGradient style={styles.container1} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
         <AnimationSignUp></AnimationSignUp>
             <Image
                 source={require('../assets/images/TravelBuddy.png')}
@@ -92,10 +94,14 @@ export default function SignUp(props) {
                     secureTextEntry={true}
                 />
             </View>
-            <Button onPress={handleLogin} mode='contained' textColor='#6199F7' style={styles.button}>Signup</Button>
-            <Text style={{ color: "white" }} onPress={() => { props.navigation.navigate('Login') }}>
+            {/* <Button onPress={handleLogin} mode='contained' textColor='#2980B9' style={styles.button}>Signup</Button> */}
+            <TouchableOpacity onPress={handleLogin} style={styles.button}>
+                <Text style={styles.text}>SignUp</Text>
+            </TouchableOpacity>
+            <Text style={{ color: "#2980B9",paddingTop:10 }} onPress={() => { props.navigation.navigate('Login') }}>
                 Already have an account? Login
             </Text>
+            </LinearGradient>
         </View>
         </ScrollView>
 
@@ -114,17 +120,38 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+     container1: {
+       // backgroundColor: '#6199F7',
+        flex: 1,
+        flexDirection: "column",
+        width: '100%',
+        height: '100%',
+        //marginTop: StatusBar.currentHeight || 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
     text: {
-        color: 'red',
+        color: '#2980B9',
+        textAlign:'center',
+        paddingTop:7,
+        fontSize:15,
+        //fontWeight:'bold',
     },
     input: {
         width: 300,
         margin: 12,
-        padding: 10,
+        padding: 7,
+        backgroundColor:'white',
     },
     button: {
         marginTop: 15,
         backgroundColor: 'white',
-        color: '#6199F7',
+        color: '#2980B9',
+        borderRadius:5,
+        width:150,
+        height:35,
+        underlineColor:'#6199F7',
+        
     }
 })

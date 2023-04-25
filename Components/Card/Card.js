@@ -47,7 +47,7 @@ const styles = StyleSheet.create(
 
     // },
     card: {
-      marginTop: 50,
+      marginTop: 30,
       backgroundColor: '#fff',
       borderRadius: 8,
       padding: 15,
@@ -66,14 +66,15 @@ const styles = StyleSheet.create(
     },
 
     image: {
-      width: '70%',
-      height: 50,
+      // width: '100%',
+      // height: 50,
       borderRadius: 8,
       marginBottom: 16,
-      justifyContent: 'center',
-      alignItems: 'center',
+      // justifyContent: 'center',
+      // alignItems: 'center',
       paddingBottom: '50%',
-      marginLeft: '30%',
+     // marginLeft: '30%',
+      resizeMode:'contain',
     },
     title: {
       fontSize: 18,
@@ -81,21 +82,25 @@ const styles = StyleSheet.create(
       marginBottom: 8,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingLeft: '5%',
-      color: "#6199F7",
+      paddingLeft: '-5%',
+      paddingRight:'5%',
+      color: "#2980B9",
     },
     description: {
       fontSize: 16,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingLeft: '5%',
+      // alignItems: 'center',
+      // justifyContent: 'center',
+      paddingLeft: '-5%',
       paddingTop: -10,
       color: "#6199F7A6",
+      fontWeight:'bold'
     },
     date: {
       paddingTop: 25,
-      paddingLeft: '5%',
+      paddingLeft: '-5%',
       color: "#6199F7A6",
+      fontWeight:'bold',
+      fontStyle:'italic',
     },
     button: {
       backgroundColor: '#2196F3',

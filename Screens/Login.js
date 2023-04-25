@@ -5,6 +5,7 @@ import axios from 'axios';
 import  { BASE_URL } from '../Api/BaseUrl'
 import AnimationLogin from './Animation/AnimationLogin';
 import Animation from './Animation/Animation'
+import {LinearGradient} from 'expo-linear-gradient';
 
 export default function Login(props) {
     const [email, setEmail] = useState('')
@@ -43,6 +44,7 @@ export default function Login(props) {
     return (
 
         <View style={styles.container}>
+        <LinearGradient style={styles.container1} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
         <AnimationLogin ></AnimationLogin>
         {/* <Animation></Animation> */}
             <Image
@@ -71,12 +73,13 @@ export default function Login(props) {
                     secureTextEntry={true}
                 />
             </View>
-            <Button onPress={handleLogin} mode='contained' textColor='#6199F7' style={styles.button}>Login</Button>
-            <Text style={{ color: "white" }}
+            <Button onPress={handleLogin} mode='contained' textColor='#2980B9' style={styles.button}>Login</Button>
+            <Text style={{ color: "#2980B9" }}
                 onPress={() => { props.navigation.navigate('SignUp') }}
             >
                 Don't have an account? Signup
             </Text>
+            </LinearGradient>
         </View>
 
     )
@@ -94,17 +97,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+    container1: {
+        backgroundColor: '#6199F7',
+        flex: 1,
+        flexDirection: "column",
+        width: '100%',
+        height: '100%',
+        //marginTop: StatusBar.currentHeight || 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
     text: {
         color: 'red',
     },
     input: {
         width: 300,
         margin: 12,
-        padding: 10,
+        padding: 5,
+        backgroundColor:'white',
     },
     button: {
         marginTop: 15,
         backgroundColor: 'white',
         color: '#6199F7',
+        borderRadius:5,
+        width:150,
+        marginBottom:5,
     },
 })

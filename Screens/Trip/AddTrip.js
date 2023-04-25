@@ -8,6 +8,7 @@ import FAB from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { BASE_URL } from '../../Api/BaseUrl';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import {LinearGradient} from 'expo-linear-gradient';
 
 
 export default function AddTrip(props) {
@@ -138,7 +139,7 @@ export default function AddTrip(props) {
                                 });
                             }}
                             query={{
-                                key: GOOGLE_MAPS_API_KEY,
+                                key: 'AIzaSyCx7ABExH2KZgBGtyuUNI7nwoN2JjHjRlw',
                                 language: 'en',
                                 components: 'country:in',
                                 radius: 30000
@@ -179,7 +180,7 @@ export default function AddTrip(props) {
                             />
                         </MapView>
                         <View style={styles.bottomDiv}>
-                            {/* <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.bb}> */}
+                             <LinearGradient style={styles.bb} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
                             <Text style={{ color: 'white', fontSize: 20, marginTop: 10 }}>Add Trip</Text>
                             <View>
                                 <TextInput
@@ -193,8 +194,11 @@ export default function AddTrip(props) {
                                 />
                             </View>
                             {/* <Button onPress={handleLocation} mode='contained' textColor='#6199F7' style={styles.button}>Submit</Button> */}
-                            <Button onPress={handleShow} mode='contained' textColor='#6199F7' style={styles.button}>next</Button>
-                        {/* </LinearGradient> */}
+                            {/* <Button onPress={handleShow} mode='contained' textColor='#2980B9'  style={styles.button}>next</Button> */}
+                            <TouchableOpacity onPress={handleShow} style={styles.button}>
+                             <Text style={styles.next}>Next</Text>
+                            </TouchableOpacity>
+                        </LinearGradient>
                         </View>
 
 
@@ -206,22 +210,24 @@ export default function AddTrip(props) {
 
                 show &&
                 <View style={styles.nextPage}>
-                    <Text style={{ color: 'white', fontSize: 20, marginTop: 10 }}>Add Trip</Text>
+                  <LinearGradient style={styles.nextPage1} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
+                    <Text style={styles.title}>Add Trip</Text>
                     <View>
                         <TextInput
                             value={propmt}
                             onChangeText={setPrompt}
                             label={'Destination'}
-                            style={styles.input}
+                            style={styles.input1}
                             underlineColor='#6199F7'
+                            textColor='#2980B9'
                             activeUnderlineColor='#6199F8'
                         />
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.input}
+                        <TouchableOpacity style={styles.input1}
                             onPress={handleDate}
                         >
-                            <Text style={{ color: '#666', margin: 15 }}>
+                            <Text style={{  margin: 15 }}>
                                 DOB : {date.toDateString() || 'Date of Birth'}
                             </Text>
                         </TouchableOpacity>
@@ -231,7 +237,7 @@ export default function AddTrip(props) {
                             value={noOfDays}
                             onChangeText={setNoOfDays}
                             label={'No of days to stay'}
-                            style={styles.input}
+                            style={styles.input1}
                             underlineColor='#6199F7'
                             activeUnderlineColor='#6199F8'
                         />
@@ -241,14 +247,14 @@ export default function AddTrip(props) {
                             value={interests}
                             onChangeText={setInterests}
                             label={'Interests'}
-                            style={styles.input}
+                            style={styles.input1}
                             underlineColor='#6199F7'
                             activeUnderlineColor='#6199F8'
                         />
                     </View>
 
-                    <Button disabled={loading ? true : false} onPress={createTrip} mode='contained' textColor='#6199F7' style={styles.button}>Create Trip</Button>
-                    <Button onPress={handleBack} mode='contained' textColor='#6199F7' style={styles.button}>Back</Button>
+                    <Button disabled={loading ? true : false} onPress={createTrip} mode='contained' textColor='#2980B9' style={styles.button1}>Create Trip</Button>
+                    <Button onPress={handleBack} mode='contained' textColor='#2980B9' style={styles.button1}>Back</Button>
                     {showDate && (
                         <DateTimePicker
                             testID="dateTimePicker"
@@ -259,6 +265,7 @@ export default function AddTrip(props) {
                             onChange={changeDate}
                         />
                     )}
+                    </LinearGradient>
                 </View>
 
             }
@@ -297,14 +304,40 @@ const styles = StyleSheet.create({
     },
     input: {
         width: 300,
+        height:20,
         margin: 12,
-        padding: 10,
+        padding: 15,
+        backgroundColor: 'white',
+    },
+     input1: {
+        width: 300,
+        margin: 12,
+        padding: 5,
         backgroundColor: 'white',
     },
     button: {
         marginTop: 15,
         backgroundColor: 'white',
+        // color: '#6199F7',
+         color: '#2980B9',
+        borderRadius:2,
+        height:'15%',
+        width:'30%',
+    },
+    button1: {
+        marginTop: 15,
+        backgroundColor: 'white',
         color: '#6199F7',
+        borderRadius:5,
+        //width:150,
+        width:'50%',
+    },
+    next:{
+        textAlign:'center',
+        color: '#2980B9',
+        marginTop:7,
+        fontSize:15,
+        //fontWeight:'bold',
     },
     nextPage: {
         position: 'absolute',
@@ -314,5 +347,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#6199F7',
         alignItems: 'center',
         marginTop: StatusBar.currentHeight || 20,
-    }
+    },
+     nextPage1: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        height: '100%',
+        //backgroundColor: '#6199F7',
+        alignItems: 'center',
+        //marginTop: StatusBar.currentHeight || 20,
+    },
+     title: {
+            marginTop:'20%',
+            fontSize: 32,
+            fontWeight: 'bold',
+            marginBottom: 15,
+            color: 'white',
+        },
 })

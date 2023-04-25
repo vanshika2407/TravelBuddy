@@ -6,6 +6,7 @@ import Card from '../../Components/Card/Card'
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { BASE_URL } from '../../Api/BaseUrl';
+import {LinearGradient} from 'expo-linear-gradient';
 
 function CommunityTab(props) {
     const [data, setData] = useState([]);
@@ -44,14 +45,16 @@ function CommunityTab(props) {
     })
 
     return (
-        <ScrollView style={{ backgroundColor: "#6199F7", flex: 1 }}>
+        <ScrollView style={{ paddingBottom: 20,height:'100%'}}>
             <View style={styles.container}>
+             <LinearGradient style={styles.container1} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
             <Text style={styles.title}>Community Tab</Text>
                 {data.length > 0 ? details : <Text style={styles.sub}>No Communities nearby</Text>}
                 {/* <Button title="Add event"  onPress={OnAddEvent} /> */}
                 <TouchableOpacity style={styles.AddButton} onPress={OnAddEvent}>
                   <Text style={styles.AddbuttonText}>Add Event</Text>
                 </TouchableOpacity>
+                </LinearGradient>
             </View>
 
         </ScrollView>
@@ -61,12 +64,11 @@ function CommunityTab(props) {
 const styles = StyleSheet.create(
     {
         title: {
-            alignItems: 'center',
-            justifyContent: 'center',
+           textAlign:'center',
             fontSize: 30,
             fontWeight: 'bold',
-            marginTop: 20,
-            marginLeft: '24%',
+            marginTop: 50,
+            //marginLeft: '24%',
             //color:'#2196F3',
             color: 'white',
 
@@ -77,13 +79,17 @@ const styles = StyleSheet.create(
             right: 0,
             bottom: 0,
         },
-        container: {
-            marginTop: 10,
+          container: {
             flex: 1,
-            //backgroundColor:'#79c2d0',
-            // backgroundColor: '#6199F7',
-            // height: 800,
-            marginTop: 50,
+            alignItems: 'center',
+            justifyContent: 'center',
+            //backgroundColor: '#6199F7',
+            height: '100%',
+            width: '100%',
+        },
+         container1: {
+            height: '100%',
+            width: '100%',
         },
         AddButton: {
         
@@ -95,6 +101,7 @@ const styles = StyleSheet.create(
             width: '70%',
             margin: 35,
             color: 'grey',
+            marginTop:'70%',
         },
         AddbuttonText: {
             color: 'grey',

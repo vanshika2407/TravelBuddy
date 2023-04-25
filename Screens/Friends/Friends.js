@@ -7,6 +7,7 @@ import { BASE_URL } from '../../Api/BaseUrl';
 import axios from 'axios';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import FriendRecommendCard from '../../Components/Card/FriendRecommendCard';
+import {LinearGradient} from 'expo-linear-gradient';
 
 const Friends = (props) => {
   const [gender, setGender] = useState('')
@@ -36,10 +37,11 @@ const Friends = (props) => {
     // <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.bb}>
     <ScrollView style={styles.bb}>
       {/* <View style={styles.container}> */}
+      <LinearGradient style={styles.bb} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
       <Text style={styles.title}>Recommendations</Text>
       <View style={styles.parent}>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Pending Requests</Text>
+          <Text style={styles.buttonText}>Send Requests</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.button]}>
           <Text style={styles.buttonText}>Received Requests</Text>
@@ -83,7 +85,7 @@ const Friends = (props) => {
       {/* <Button style={styles.find} onPress={findMatch}  title="Find Match" /> */}
       <TouchableOpacity style={styles.find} onPress={findMatch}>
         <Text style={styles.Text}>Find Match</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> 
 
       {/* <Image source={Pic} style={styles.image}/> */}
 
@@ -101,6 +103,7 @@ const Friends = (props) => {
       }
       {loading && <ActivityIndicator animating={true} color={MD2Colors.white} />}
       {!loading && data && data.length === 0 && <Text style={{ textAlign: 'center', marginTop: 30, fontSize: 20,color:'white' }}>No Match Found</Text>}
+      </LinearGradient>
       {/* </View> */}
     </ScrollView>
       // </LinearGradient>
@@ -112,8 +115,11 @@ const Friends = (props) => {
 const styles = StyleSheet.create(
   {
     bb: {
-      backgroundColor: '#6199F7',
+      //backgroundColor: '#6199F7',
       height:'100%',
+      flex: 1,
+      // alignItems:'center',
+      // justifyContent:"center",
     },
     container: {
       backgroundColor: '#6199F7',
@@ -172,6 +178,7 @@ const styles = StyleSheet.create(
       marginTop:0,
       height:'100%',
       backgroundColor:'#00000000',
+       //backgroundColor:'#2980B9',
       borderWidth:0,
     },
     filter:{
@@ -185,13 +192,13 @@ const styles = StyleSheet.create(
       marginTop:20,
       //borderRadius:10,
        padding:2,
-       marginLeft:0,
+       marginLeft:110,
     alignItems: 'center',
-    width:'100%',
-    margin:50,
+    width:'40%',
+    //margin:50,
     borderColor:'white',
     borderWidth:2,
-    backgroundColor:'#0066cc',
+    //backgroundColor:'#6DD5FA',
     },
     Text:{
      color:'white',

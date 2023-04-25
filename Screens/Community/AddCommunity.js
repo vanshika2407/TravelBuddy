@@ -13,6 +13,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { storage } from '../../firebaseConfig'
 import uuid from 'react-native-uuid';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import {LinearGradient} from 'expo-linear-gradient';
 
 
 function AddCommunity(props) {
@@ -156,15 +157,16 @@ function AddCommunity(props) {
     return (
         <>
             <ScrollView style={{ paddingBottom: 20 }}>
-
+              
                 <View style={styles.container}>
+                  <LinearGradient style={styles.container1} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
                     {/* <Image source={Logo} style={styles.logo}/> */}
-
+                    <View style={styles.box}>
                     <Text style={styles.title}>Add My Event</Text>
-                    <View>
-                        <Image source={img ? { uri: img } : Logo} style={{ height: 200, width: 300, marginTop: 10 }} />
+                        <Image source={img ? { uri: img } : Logo} style={{ height: 200, width: 300, marginTop: 20 }} />
                         <ImageFromGallery setImage={setImg} aspect="rectangle" />
                     </View>
+                    <View style={styles.space}>
                     <View>
                         <TextInput
                             value={eventName}
@@ -176,11 +178,11 @@ function AddCommunity(props) {
 
                         />
                     </View>
-                    <View>
+                    <View >
                         <TouchableOpacity style={styles.input}
                             onPress={handleDate}
                         >
-                            <Text style={{ color: '#666', margin: 15 }}>
+                            <Text style={{  margin: 15 }}>
                                 Event Date : {date.toDateString() || 'Date of Birth'}
                             </Text>
                         </TouchableOpacity>
@@ -202,7 +204,7 @@ function AddCommunity(props) {
 
                         />
                     </View>
-
+                    </View>
                     <Button disabled={loading ? true : false} title="Add event" onPress={OnAddEvent} style={{ marginBottom: 20 }} />
                     {show && (
                         <DateTimePicker
@@ -214,6 +216,7 @@ function AddCommunity(props) {
                             onChange={changeDate}
                         />
                     )}
+                    </LinearGradient>
                 </View>
             </ScrollView>
             <GooglePlacesAutocomplete
@@ -246,7 +249,7 @@ function AddCommunity(props) {
                         });
                     }}
                     query={{
-                        key: GOOGLE_API_KEY,
+                        key:'AIzaSyCx7ABExH2KZgBGtyuUNI7nwoN2JjHjRlw',
                         language: 'en',
                         components: 'country:in',
                         radius: 30000
@@ -270,6 +273,9 @@ const styles = StyleSheet.create(
             margin: 250,
 
         },
+        box:{
+         marginTop:200,
+        },
         logo: {
             alignItems: 'center',
             width: '97%',
@@ -283,11 +289,21 @@ const styles = StyleSheet.create(
             height: '100%',
             width: '100%',
         },
+        container1: {
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            //backgroundColor: '#6199F7',
+            height: '100%',
+            width: '100%',
+        },
         title: {
             fontSize: 32,
             fontWeight: 'bold',
-            marginBottom: 32,
+            marginBottom: 10,
+            marginTop:-40,
             color: 'white',
+            textAlign:'center',
         },
 
         SignButton: {
@@ -308,6 +324,9 @@ const styles = StyleSheet.create(
             padding: 10,
             backgroundColor: 'white',
         },
+        space:{
+            marginTop:-110,
+        }
     }
 );
 export default AddCommunity;
