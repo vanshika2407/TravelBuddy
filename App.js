@@ -87,6 +87,12 @@ export default function App() {
              size=focused ? 25: 15;
              color=focused ? '#2980B9': 'black';
           }
+           else if(route.name==='Home')
+          {
+            icon='home';
+             size=focused ? 25: 15;
+             color=focused ? '#2980B9': 'black';
+          }
           return(
             <FontAwesome5
             name={icon}

@@ -253,8 +253,8 @@ export default function AddTrip(props) {
                         />
                     </View>
 
-                    <Button disabled={loading ? true : false} onPress={createTrip} mode='contained' textColor='#2980B9' style={styles.button1}>Create Trip</Button>
-                    <Button onPress={handleBack} mode='contained' textColor='#2980B9' style={styles.button1}>Back</Button>
+                    <Button disabled={loading ? true : false} onPress={createTrip} mode='contained' textColor='#ffff' style={styles.button1}>Create Trip</Button>
+                    <Button onPress={handleBack} mode='contained' textColor='#ffff' style={styles.button1}>Back</Button>
                     {showDate && (
                         <DateTimePicker
                             testID="dateTimePicker"
@@ -326,12 +326,22 @@ const styles = StyleSheet.create({
         height:'20%',
         width:'30%',
     },
-    button1: {
-        marginTop: 15,
-        backgroundColor: 'white',
-        color: '#6199F7',
-        borderRadius:5,
-        //width:150,
+    // button1: {
+    //     marginTop: 15,
+    //     backgroundColor: 'white',
+    //     color: '#6199F7',
+    //     borderRadius:5,
+    //     //width:150,
+    //     width:'50%',
+    // },
+     button1: {
+        marginTop: 10,
+      backgroundColor: '#2980B9',
+        // color: '#6199F7',
+         color: '#2980B9',
+        borderRadius:4,
+        borderWidth:2,
+        borderColor:'white',
         width:'50%',
     },
     next:{

@@ -53,8 +53,8 @@ export default function Iternary(props) {
                     return (
                         <View>
                             <IternaryCard text={item} />
-                            <TouchableOpacity  onPress={handlePop}>
-                            <Text>Check Reviews</Text>
+                            <TouchableOpacity  style={styles.reviewB} onPress={handlePop}>
+                            <Text style={styles.review}>Check Reviews</Text>
                             </TouchableOpacity>
                         </View>
                     )
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
       borderRadius:4,
       alignItems:'center',
       justifyContent:'center',
-      marginTop:'40%',
+      marginTop:'0%',
       width:200,
       height:45,
       borderColor:'white',
@@ -115,5 +115,15 @@ const styles = StyleSheet.create({
     buttonText:{
         color:'white',
         fontWeight:'bold',
+    },
+    review:{
+        color:'white',
+        textAlign:'center',
+        marginTop:4,
+        fontWeight:'bold',
+    },
+    reviewB:{
+        backgroundColor:'#2980B9',
+        height:25,
     }
 });
