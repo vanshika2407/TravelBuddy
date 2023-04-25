@@ -18,6 +18,9 @@ function Card(props) {
       }
       )
   }
+  const enterMessaging = () => {
+    props.navigation.navigate('Messaging');
+  }
   return (
     <View style={styles.card}>
       <Image source={{ uri: props.imageSource }} style={styles.image}></Image>
@@ -25,6 +28,9 @@ function Card(props) {
         <Text style={styles.title}>{props.title}</Text>
         <TouchableOpacity disabled={status == "joined" || status == "admin" ? true : false} onPress={handleJoin} style={styles.button}>
           <Text style={styles.buttonText}>{status == "admin" ? "admin" : (status == "joined" ? "joined": "join")}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={enterMessaging} style={styles.button}>
+          <Text style={styles.buttonText}>Message</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.description}>{props.description}</Text>

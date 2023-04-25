@@ -20,6 +20,7 @@ const Home = (props) => {
         .then(res => {
           // console.log(res.data)
           setData(res.data)
+          props.setUsername(res.data.username)
           setLoading(false)
         })
         .catch(error => console.log(error))

@@ -246,7 +246,7 @@ function AddCommunity(props) {
                         });
                     }}
                     query={{
-                        key: 'AIzaSyBXQMqz-hANrslZ2xiJiu1tW_NaTgyZlAI',
+                        key: 'AIzaSyCx7ABExH2KZgBGtyuUNI7nwoN2JjHjRlw',
                         language: 'en',
                         components: 'country:in',
                         radius: 30000

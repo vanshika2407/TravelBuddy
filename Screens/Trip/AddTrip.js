@@ -138,7 +138,7 @@ export default function AddTrip(props) {
                                 });
                             }}
                             query={{
-                                key: 'AIzaSyBXQMqz-hANrslZ2xiJiu1tW_NaTgyZlAI',
+                                key: 'AIzaSyCx7ABExH2KZgBGtyuUNI7nwoN2JjHjRlw',
                                 language: 'en',
                                 components: 'country:in',
                                 radius: 30000
@@ -219,7 +219,7 @@ export default function AddTrip(props) {
                             onPress={handleDate}
                         >
                             <Text style={{ color: '#666', margin: 15 }}>
-                                DOB : {date.toDateString() || 'Date of Birth'}
+                                Arrival Date : {date.toDateString() || 'Date of Birth'}
                             </Text>
                         </TouchableOpacity>
                     </View>

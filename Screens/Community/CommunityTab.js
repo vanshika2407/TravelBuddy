@@ -25,11 +25,12 @@ function CommunityTab(props) {
             }
             )
     }, []);
-    // console.log(data);
+    // console.log(data);@gmail.com
     const details = data.map((detail, index) => {
         return (
             <View>
                 <Card
+                    navigation = {props.navigation}
                     key={index}
                     imageSource={detail.imageUrl}
                     title={detail.title}

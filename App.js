@@ -13,6 +13,7 @@ import AddCommunity from './Screens/Community/AddCommunity';
 import AddTrip from './Screens/Trip/AddTrip';
 import Friends from './Screens/Friends/Friends';
 import Iternary from './Screens/Iternary/Iternary';
+import Messaging from './Screens/Community/Messaging';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   const [email, setEmail] = useState('par76.pkar@gmail.com')
+  const [username, setUsername] = useState('Parth')
   const [trip, setTrip] = useState({
     destination: {
       lat: 19.107022,
@@ -47,6 +49,9 @@ export default function App() {
         <Stack.Screen name="AddCommunity">
           {props => <AddCommunity {...props} email={email} setEmail={setEmail} />}
         </Stack.Screen>
+        <Stack.Screen name="Messaging">
+          {props => <Messaging {...props} email={email} username={username} />}
+        </Stack.Screen>
        
       </Stack.Navigator>
     )
@@ -61,7 +66,7 @@ export default function App() {
 
       >
         <Tab.Screen  name="Home">
-          {props => <Home {...props} email={email}  />}
+          {props => <Home {...props} setUsername={setUsername}  email={email}  />}
         </Tab.Screen>
         <Tab.Screen name="AddTrip">
           {props => <AddTrip {...props} email={email} setTrip={setTrip} setEmail={setEmail} />}
