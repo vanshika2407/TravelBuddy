@@ -18,24 +18,6 @@ function HomeCard(props) {
 
 const styles = StyleSheet.create(
     {
-        Homecard: {
-            marginTop: 30,
-            backgroundColor: '#fff',
-            borderRadius: 8,
-            padding: 15,
-            //marginVertical: 8,
-            marginHorizontal: 45,
-            shadowColor: '#000',
-            height: 110,
-            width: '75%',
-            shadowOffset: {
-                width: 0,
-                height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 5,
-        },
         image: {
             borderRadius: 10,
             width: 80,
@@ -62,7 +44,7 @@ const styles = StyleSheet.create(
             //flex: 1,
             flexDirection: "row",
             marginBottom:0,
-            marginTop:'116%',
+            marginTop:'15%',
             marginLeft:15,
             
         },

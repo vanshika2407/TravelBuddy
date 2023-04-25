@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ToastAndroid, StatusBar, Image } from 'react-native'
+import { View, Text, StyleSheet, ToastAndroid, StatusBar, Image, TouchableOpacity } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import axios from 'axios';
 import  { BASE_URL } from '../Api/BaseUrl'
@@ -73,7 +73,10 @@ export default function Login(props) {
                     secureTextEntry={true}
                 />
             </View>
-            <Button onPress={handleLogin} mode='contained' textColor='#2980B9' style={styles.button}>Login</Button>
+            {/* <Button onPress={handleLogin} mode='contained' textColor='#2980B9' style={styles.button}>Login</Button> */}
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+             <Text style={styles.text}>Login</Text>
+            </TouchableOpacity>
             <Text style={{ color: "#2980B9" }}
                 onPress={() => { props.navigation.navigate('SignUp') }}
             >
@@ -108,8 +111,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
-    text: {
-        color: 'red',
+    text:{
+        textAlign:'center',
+        color: 'white',
+        marginTop:5,
+        marginBottom:5,
+        fontSize:18,
+        //fontWeight:'bold',
     },
     input: {
         width: 300,
@@ -118,11 +126,13 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
     },
     button: {
-        marginTop: 15,
-        backgroundColor: 'white',
-        color: '#6199F7',
-        borderRadius:5,
-        width:150,
-        marginBottom:5,
+        marginTop: 10,
+      backgroundColor: '#2980B9',
+        // color: '#6199F7',
+         color: '#2980B9',
+        borderRadius:4,
+        borderWidth:2,
+        borderColor:'white',
+        width:'30%',
     },
 })

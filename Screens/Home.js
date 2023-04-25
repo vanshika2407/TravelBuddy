@@ -10,6 +10,7 @@ import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import * as Location from 'expo-location';
 import Pic from '../assets/images/home.png'
 import Animation from './Animation/Animation'
+import pic from '.././assets/images/travel.jpg'
 
 const Home = (props) => {
   const [data, setData] = useState({ username: '', profilePhoto: '' });
@@ -71,7 +72,11 @@ const Home = (props) => {
         </TouchableOpacity>
         </View>
         <Image source={Logo} style={styles.logo} />
-        <Animation></Animation>
+        {/* <Animation></Animation> */}
+        <View style={styles.Homecard}>
+        <Image  style={styles.pic} source={pic}></Image>
+     <Text style={styles.homeText}>Wanderlust!</Text>
+    </View>
         {/* <Image source={Pic} style={styles.image}/> */}
         {!loading && data &&
           <HomeCard
@@ -110,6 +115,41 @@ const styles = StyleSheet.create(
       //color:'#2196F3',
       color: 'white',
     },
+     Homecard: {
+     marginTop:50,
+     marginLeft:55,
+    backgroundColor: '#ffff',
+    borderRadius: 8,
+    padding:15,
+    //marginVertical: 8,
+    marginHorizontal: 45,
+    shadowColor: '#000',
+    height:320,
+    width:'70%',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    opacity:0.8,
+  },
+  homeText:{
+   fontSize:25,
+   textAlign:'center',
+  fontWeight:'bold',
+  fontFamily:'Cochin',
+  marginTop:5,
+  paddingTop:5,
+  color:'#2980B9',
+  },
+  pic:{
+    marginTop:10,
+    padding:0,
+    flex:1,
+    resizeMode:'cover',
+    //height:100,
+    width:'100%',
+    borderRadius: 8,
+  },
     logo: {
       alignItems: 'center',
       width: '72%',
@@ -145,7 +185,7 @@ const styles = StyleSheet.create(
     height:'100%',
     opacity:0.7,
   },
-  }
+}
 )
 
 export default Home

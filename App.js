@@ -126,8 +126,8 @@ export default function App() {
           headerShown: false
         }}
       >
-      <Stack.Screen name="HomeScreen" component={HomeScreen}>
-        </Stack.Screen>
+      {/* <Stack.Screen name="HomeScreen" component={HomeScreen}>
+        </Stack.Screen> */}
         <Stack.Screen name="Login">
           {props => <Login {...props} email={email} setEmail={setEmail} />}
         </Stack.Screen>
@@ -137,8 +137,8 @@ export default function App() {
         <Stack.Screen name="SignUp">
           {props => <SignUp {...props} setEmail={setEmail} />}
         </Stack.Screen>
-        {/* <Stack.Screen name="HomeScreen" component={HomeScreen}>
-        </Stack.Screen> */}
+        <Stack.Screen name="HomeScreen" component={HomeScreen}>
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

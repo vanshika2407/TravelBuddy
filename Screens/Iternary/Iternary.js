@@ -6,10 +6,12 @@ import { BASE_URL } from '../../Api/BaseUrl'
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import AnimationItenary from '../Animation/AnimationItenary'
 import {LinearGradient} from 'expo-linear-gradient';
+import ReviewPop from '../../Components/PopUp/ReviewsPop'
 
 export default function Iternary(props) {
     const [data, setData] = React.useState([])
     const [loading, setLoading] = React.useState(false)
+    const [pop,setPop]=React.useState(false)
     // console.log(props)
     const generateIternary = () => {
         setLoading(true)
@@ -27,7 +29,13 @@ export default function Iternary(props) {
             .catch(err => console.log(err)
             )
     }
+    const handlePop=()=>{
+        setPop(true)
+    }
     return (
+        <>
+        {!pop &&
+        <>
         <ScrollView style={styles.scrollContainer}>
 
             <View style={styles.container}>
@@ -45,6 +53,9 @@ export default function Iternary(props) {
                     return (
                         <View>
                             <IternaryCard text={item} />
+                            <TouchableOpacity  onPress={handlePop}>
+                            <Text>Check Reviews</Text>
+                            </TouchableOpacity>
                         </View>
                     )
                 }
@@ -54,7 +65,15 @@ export default function Iternary(props) {
                 </LinearGradient>
             </View>
         </ScrollView>
+        </>
+        }
+        {
+        pop &&
+        <ReviewPop />
+        }
+       </>
     )
+            
 }
 
 const styles = StyleSheet.create({

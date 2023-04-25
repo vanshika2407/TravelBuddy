@@ -131,11 +131,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
-    text: {
-        color: '#2980B9',
+     text:{
         textAlign:'center',
-        paddingTop:7,
-        fontSize:15,
+        color: 'white',
+        marginTop:5,
+        marginBottom:5,
+        fontSize:18,
         //fontWeight:'bold',
     },
     input: {
@@ -144,14 +145,24 @@ const styles = StyleSheet.create({
         padding: 7,
         backgroundColor:'white',
     },
-    button: {
-        marginTop: 15,
-        backgroundColor: 'white',
-        color: '#2980B9',
-        borderRadius:5,
-        width:150,
-        height:35,
-        underlineColor:'#6199F7',
+    // button: {
+    //     marginTop: 15,
+    //     backgroundColor: 'white',
+    //     color: '#2980B9',
+    //     borderRadius:5,
+    //     width:150,
+    //     height:35,
+    //     underlineColor:'#6199F7',
         
-    }
+    // }
+     button: {
+        marginTop: 10,
+      backgroundColor: '#2980B9',
+        // color: '#6199F7',
+         color: '#2980B9',
+        borderRadius:4,
+        borderWidth:2,
+        borderColor:'white',
+        width:'30%',
+    },
 })
