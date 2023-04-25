@@ -12,6 +12,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { storage } from '../firebaseConfig'
 import { decode } from 'base-64';
 import uuid from 'react-native-uuid';
+import {LinearGradient} from 'expo-linear-gradient';
 
 if (typeof atob === 'undefined') {
     global.atob = decode;
@@ -139,6 +140,7 @@ export default function SignUp({email, navigation}) {
         <ScrollView style={{ paddingBottom: 20 }}>
 
             <View style={styles.container}>
+             <LinearGradient style={styles.bb} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
                 <View>
                     <Image source={img ? { uri: img } : pp} style={{ height: 150, width: 150, borderRadius: 100, marginTop: 10 }} />
                     <ImageFromGallery setImage={setImg} aspect="square" />
@@ -155,7 +157,7 @@ export default function SignUp({email, navigation}) {
                         onChangeText={setBio}
                         label={"Bio"}
                         style={styles.input}
-                        underlineColor='#6199F7'
+                        underlineColor='#FFFFFF'
                         activeUnderlineColor='#6199F8'
 
                     />
@@ -166,7 +168,7 @@ export default function SignUp({email, navigation}) {
                         onChangeText={setInterests}
                         label={'Interests'}
                         style={styles.input}
-                        underlineColor='#6199F7'
+                        underlineColor='#FFFFFF'
                         activeUnderlineColor='#6199F8'
                         onPress={handleDate}
                     />
@@ -175,7 +177,7 @@ export default function SignUp({email, navigation}) {
                     <TouchableOpacity style={styles.input}
                         onPress={handleDate}
                     >
-                        <Text style={{ color: '#666', margin: 15 }}>
+                        <Text style={{ color: 'black', margin: 15 }}>
                             DOB : {date.toDateString() || 'Date of Birth'}
                         </Text>
                     </TouchableOpacity>
@@ -185,8 +187,8 @@ export default function SignUp({email, navigation}) {
                         value={city}
                         onChangeText={setCity}
                         label={'City'}
-                        style={styles.input}
-                        underlineColor='#6199F7'
+                        style={styles.inputCity}
+                        underlineColor='#FFFFFF'
                         activeUnderlineColor='#6199F8'
                     />
                 </View>
@@ -197,7 +199,7 @@ export default function SignUp({email, navigation}) {
                         showSelectedOverlay={true}
                         mode='outlined'
                         selected={gender === 'Male' ? true : false}
-                        style={{ marginRight: 10 }}
+                       style={styles.chipStyle}
                     >
                         Male
                     </Chip>
@@ -207,7 +209,7 @@ export default function SignUp({email, navigation}) {
                         showSelectedOverlay={true}
                         mode='outlined'
                         selected={gender === 'Female' ? true : false}
-                        style={{ marginRight: 10 }}
+                        style={styles.chipStyle}
                     >
                         Female
                     </Chip>
@@ -217,6 +219,7 @@ export default function SignUp({email, navigation}) {
                         showSelectedOverlay={true}
                         mode='outlined'
                         selected={gender === 'Other' ? true : false}
+                         style={styles.chipStyle}
                     >
                         Other
                     </Chip>
@@ -226,8 +229,8 @@ export default function SignUp({email, navigation}) {
                         value={emergencyPhone}
                         onChangeText={setEmergencyPhone}
                         label={'Emergency Phone'}
-                        style={styles.input}
-                        underlineColor='#6199F7'
+                        style={styles.inputPhone}
+                        underlineColor='#FFFFFF'
                         activeUnderlineColor='#6199F8'
                     />
                 </View>
@@ -247,6 +250,7 @@ export default function SignUp({email, navigation}) {
                         onChange={changeDate}
                     />
                 )}
+                </LinearGradient>
             </View>
         </ScrollView>
 
@@ -265,14 +269,61 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+     bb: {
+       // backgroundColor: '#6199F7',
+        flex: 1,
+        flexDirection: "column",
+        width: '100%',
+        height: '100%',
+        //marginTop: StatusBar.currentHeight || 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
     text: {
         color: 'red',
+    },
+    chipStyle:{
+      margin: 10,
+     // marginLeft:-60,
+      marginBottom:10,
+      marginTop:0,
+      height:'70%',
+      backgroundColor:'white',
+       //borderColor:'#2980B9',
+        //borderWidth:2,
     },
     input: {
         width: 300,
         margin: 12,
-        padding: 10,
+        padding: 2,
+        height:60,
         backgroundColor: 'white',
+        borderRadius:0,
+        borderColor:'#2980B9',
+        borderWidth:2,
+    },
+     inputCity: {
+        width: 100,
+        margin: 10,
+        padding:0,
+        height:40,
+        backgroundColor: 'white',
+        borderRadius:0,
+        marginLeft:-150,
+        borderColor:'#2980B9',
+        borderWidth:2,
+    },
+     inputPhone: {
+        width: 200,
+        margin: 10,
+        padding:0,
+        height:40,
+        backgroundColor: 'white',
+        borderRadius:0,
+        marginLeft:-100,
+        borderColor:'#2980B9',
+        borderWidth:2,
     },
     button: {
         marginTop: 15,

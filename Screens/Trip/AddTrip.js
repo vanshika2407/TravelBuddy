@@ -317,11 +317,13 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 15,
-        backgroundColor: 'white',
+      backgroundColor: '#2980B9',
         // color: '#6199F7',
          color: '#2980B9',
-        borderRadius:2,
-        height:'15%',
+        borderRadius:4,
+        borderWidth:2,
+        borderColor:'white',
+        height:'20%',
         width:'30%',
     },
     button1: {
@@ -334,9 +336,9 @@ const styles = StyleSheet.create({
     },
     next:{
         textAlign:'center',
-        color: '#2980B9',
-        marginTop:7,
-        fontSize:15,
+        color: 'white',
+        marginTop:8,
+        fontSize:18,
         //fontWeight:'bold',
     },
     nextPage: {

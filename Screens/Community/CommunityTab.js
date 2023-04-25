@@ -45,11 +45,11 @@ function CommunityTab(props) {
     })
 
     return (
-        <ScrollView style={{ paddingBottom: 20,height:'100%'}}>
+        <ScrollView style={styles.scrollContainer}>
             <View style={styles.container}>
              <LinearGradient style={styles.container1} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
-            <Text style={styles.title}>Community Tab</Text>
-                {data.length > 0 ? details : <Text style={styles.sub}>No Communities nearby</Text>}
+            <Text style={styles.title}>Events Tab</Text>
+                {data.length > 0 ? details : <Text style={styles.sub}>No Events nearby</Text>}
                 {/* <Button title="Add event"  onPress={OnAddEvent} /> */}
                 <TouchableOpacity style={styles.AddButton} onPress={OnAddEvent}>
                   <Text style={styles.AddbuttonText}>Add Event</Text>
@@ -63,6 +63,13 @@ function CommunityTab(props) {
 
 const styles = StyleSheet.create(
     {
+        scrollContainer: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+         height: '100%',
+         width: '100%',
+
+    },
         title: {
            textAlign:'center',
             fontSize: 30,
@@ -93,7 +100,7 @@ const styles = StyleSheet.create(
         },
         AddButton: {
         
-            backgroundColor: 'white',
+            backgroundColor: '#2980B9',
             padding: 12,
             borderRadius: 4,
             alignItems: 'center',
@@ -102,17 +109,19 @@ const styles = StyleSheet.create(
             margin: 35,
             color: 'grey',
             marginTop:'70%',
+            borderColor:'white',
+            borderWidth:2,
         },
         AddbuttonText: {
-            color: 'grey',
+            color: 'white',
             fontSize: 18,
         },
         sub:{
             fontSize:20,
             color:'white',
             alignItems:'center',
-            marginLeft:50,
             marginTop:'50%',
+            textAlign:'center',
 
         }
     }

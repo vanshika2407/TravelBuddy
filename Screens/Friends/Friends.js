@@ -35,7 +35,7 @@ const Friends = (props) => {
 
   return (
     // <LinearGradient colors={['#221e59', '#4747cd', '#192f6a']} style={styles.bb}>
-    <ScrollView style={styles.bb}>
+    <ScrollView style={styles.scrollContainer}>
       {/* <View style={styles.container}> */}
       <LinearGradient style={styles.bb} colors={['#2980B9', '#6DD5FA', '#FFFFFF']}>
       <Text style={styles.title}>Recommendations</Text>
@@ -84,7 +84,7 @@ const Friends = (props) => {
       </View>
       {/* <Button style={styles.find} onPress={findMatch}  title="Find Match" /> */}
       <TouchableOpacity style={styles.find} onPress={findMatch}>
-        <Text style={styles.Text}>Find Match</Text>
+        <Text style={styles.Text}>Find Your Buddy</Text>
       </TouchableOpacity> 
 
       {/* <Image source={Pic} style={styles.image}/> */}
@@ -114,6 +114,13 @@ const Friends = (props) => {
 
 const styles = StyleSheet.create(
   {
+    scrollContainer: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+         height: '100%',
+         width: '100%',
+
+    },
     bb: {
       //backgroundColor: '#6199F7',
       height:'100%',
@@ -189,16 +196,26 @@ const styles = StyleSheet.create(
     marginBottom:-20,
     },
     find:{
-      marginTop:20,
+     // marginTop:100,
       //borderRadius:10,
-       padding:2,
-       marginLeft:110,
-    alignItems: 'center',
-    width:'40%',
+     //  padding:2,
+      marginLeft:80,
+   // alignItems: 'center',
+   // width:'70%',
     //margin:50,
-    borderColor:'white',
-    borderWidth:2,
-    //backgroundColor:'#6DD5FA',
+    //borderColor:'white',
+    //borderWidth:2,
+    //backgroundColor:'#2980B9',
+        flex:1,
+      backgroundColor:'#2980B9',
+      borderRadius:4,
+      alignItems:'center',
+      justifyContent:'center',
+      marginTop:'40%',
+      width:200,
+      height:45,
+      borderColor:'white',
+      borderWidth:2,
     },
     Text:{
      color:'white',

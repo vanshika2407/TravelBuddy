@@ -13,7 +13,8 @@ import AddCommunity from './Screens/Community/AddCommunity';
 import AddTrip from './Screens/Trip/AddTrip';
 import Friends from './Screens/Friends/Friends';
 import Iternary from './Screens/Iternary/Iternary';
-
+import Hotel from './Screens/HotelRecommendation/Hotel';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -55,9 +56,47 @@ export default function App() {
   const HomeScreen = () => {
     return (
       <Tab.Navigator
-        screenOptions={{
+        screenOptions={({route})=>({
+          tabBarIcon:({focused,size,color})=>{
+          let icon;
+          if(route.name==='Friends'){
+            icon='user-friends';
+            size=focused ? 25: 15;
+            color=focused ? '#2980B9': 'black';
+          }
+          else if(route.name==='AddTrip'){
+            icon='plane-departure';
+             size=focused ? 25: 15;
+             color=focused ? '#2980B9': 'black';
+          }
+          else if(route.name==='Events')
+          {
+            icon='glass-cheers';
+             size=focused ? 25: 15;
+             color=focused ? '#2980B9': 'black';
+          }
+          else if(route.name==='Itinerary')
+          {
+            icon='list';
+             size=focused ? 25: 15;
+             color=focused ? '#2980B9': 'black';
+          }
+          else if(route.name==='Hotel')
+          {
+            icon='hotel';
+             size=focused ? 25: 15;
+             color=focused ? '#2980B9': 'black';
+          }
+          return(
+            <FontAwesome5
+            name={icon}
+              size={size}
+              color={color}
+            />
+          )
+          },
           headerShown: false
-        }}
+        })}
 
       >
         <Tab.Screen  name="Home">
@@ -69,10 +108,13 @@ export default function App() {
         <Tab.Screen name="Friends">
           {props => <Friends {...props} email={email} trip={trip} setEmail={setEmail} />}
         </Tab.Screen>
-        <Tab.Screen name="Iternary">
+        <Tab.Screen name="Itinerary">
           {props => <Iternary {...props} trip={trip} />}
         </Tab.Screen>
-        <Tab.Screen name="Community" component={CommunityScreen} />
+        <Tab.Screen name="Events" component={CommunityScreen} />
+        <Tab.Screen name="Hotel">
+        {props=><Hotel/>}
+      </Tab.Screen>
       </Tab.Navigator>
     )
   }
@@ -84,8 +126,8 @@ export default function App() {
           headerShown: false
         }}
       >
-      {/* <Stack.Screen name="HomeScreen" component={HomeScreen}>
-        </Stack.Screen> */}
+      <Stack.Screen name="HomeScreen" component={HomeScreen}>
+        </Stack.Screen>
         <Stack.Screen name="Login">
           {props => <Login {...props} email={email} setEmail={setEmail} />}
         </Stack.Screen>
@@ -95,8 +137,8 @@ export default function App() {
         <Stack.Screen name="SignUp">
           {props => <SignUp {...props} setEmail={setEmail} />}
         </Stack.Screen>
-        <Stack.Screen name="HomeScreen" component={HomeScreen}>
-        </Stack.Screen>
+        {/* <Stack.Screen name="HomeScreen" component={HomeScreen}>
+        </Stack.Screen> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
