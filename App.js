@@ -13,8 +13,8 @@ import AddCommunity from './Screens/Community/AddCommunity';
 import AddTrip from './Screens/Trip/AddTrip';
 import Friends from './Screens/Friends/Friends';
 import Iternary from './Screens/Iternary/Iternary';
-import Hotel from './Screens/HotelRecommendation/Hotel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Hotel from './Screens/Hotel';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -119,7 +119,7 @@ export default function App() {
         </Tab.Screen>
         <Tab.Screen name="Events" component={CommunityScreen} />
         <Tab.Screen name="Hotel">
-        {props=><Hotel/>}
+        {props=><Hotel trip={trip}/>}
       </Tab.Screen>
       </Tab.Navigator>
     )
@@ -134,6 +134,8 @@ export default function App() {
       >
       {/* <Stack.Screen name="HomeScreen" component={HomeScreen}>
         </Stack.Screen> */}
+        <Stack.Screen name="HomeScreen" component={HomeScreen}>
+        </Stack.Screen>
         <Stack.Screen name="Login">
           {props => <Login {...props} email={email} setEmail={setEmail} />}
         </Stack.Screen>
@@ -142,8 +144,6 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="SignUp">
           {props => <SignUp {...props} setEmail={setEmail} />}
-        </Stack.Screen>
-        <Stack.Screen name="HomeScreen" component={HomeScreen}>
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

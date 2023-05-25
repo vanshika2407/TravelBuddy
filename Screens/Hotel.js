@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import {View,Text,StyleSheet, ScrollView,TouchableOpacity,SafeAreaView} from 'react-native'
-import Taj from '../../assets/images/Taj.jpg';
-import HotelCard from '../../Components/Card/HotelCard'
+import Taj from '.././assets/images/Taj.jpg';
+import HotelCard from '../Components/Card/HotelCard'
 import { useNavigation } from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient';
+import { getPlacesData } from '../Api/HotelApi';
+import { getSquareCoordinates } from './HotelRecommendation/getcoords';
 const Info=[
     {
 imageSource:Taj,
@@ -28,8 +30,24 @@ key:3,
     }
 
 ]
-function Hotel()
+
+
+
+export default function Hotel({route})
 {
+    const [places, setPlaces] = useState(null)
+
+    const getPlaces = async () => {
+        const {lat,lng} = route.params.trip
+        let {sw,ne} = getSquareCoordinates(lat,lng)
+        let data = await getPlacesData(sw,ne)
+        setPlaces(data)
+    }
+
+    useEffect(()=> {
+        getPlaces()
+    },[])
+    console.log(route.params.trip);
     const navigation=useNavigation();
    const  OnAddEvent=()=>
    {
@@ -37,15 +55,16 @@ function Hotel()
    };
     const details=Info.map(detail=>{
 return(
-        <View>
-<HotelCard
-key={detail.key}
-imageSource={detail.imageSource}
-title={detail.title}
-budget={detail.budget}
-// date={detail.date}
-/>
-</View>
+    <View>
+        {places.map((place,i) => {
+            <HotelCard
+            key={i}
+            imageSource={place.photo.images.large.url}
+            title={place.name}
+            budget={place.price}
+            />
+        })}
+    </View>
 
 )
     })
@@ -97,4 +116,3 @@ const styles=StyleSheet.create(
   },
     }
 );
-export default Hotel
